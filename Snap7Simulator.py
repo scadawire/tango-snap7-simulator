@@ -17,8 +17,8 @@ class Snap7Simulator(Device, metaclass=DeviceMeta):
         self.get_device_properties(self.get_device_class())
         self.info_stream("Connecting to port: " + str(self.port))
         self.server = Server()
-        self.server.register_area(Areas.DB,1,bytearray(1024))
-        self.server.start(tcpport=self.port)
+        # self.server.register_area(SrvArea.DB,1,bytearray(1024))
+        self.server.start(tcpport=self.port, init_standard_values=True)
         self.set_state(DevState.ON)
 
 if __name__ == "__main__":
