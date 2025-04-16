@@ -23,7 +23,7 @@ class Snap7Simulator(Device, metaclass=DeviceMeta):
         self.set_state(DevState.INIT)
         self.get_device_properties(self.get_device_class())
         self.info_stream("Connecting to port: " + str(self.port))
-        Thread(target=self.runServer).start()
+        Thread(target=self.runServer, daemon=True).start()
         self.set_state(DevState.ON)
 
 if __name__ == "__main__":
